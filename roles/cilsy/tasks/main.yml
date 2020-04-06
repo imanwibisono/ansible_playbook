@@ -1,0 +1,9 @@
+---
+
+- name: Install a list of packages
+  apt:
+    pkg:
+    - vim
+    - htop
+    update_cache: yes
+  become: true

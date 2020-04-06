@@ -1,5 +1,5 @@
 ---
 - name: Hardening with ansible
-  hosts: client
+  hosts: aws
   roles:
-     - openshift
+     - cilsy
