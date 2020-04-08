@@ -1,0 +1,27 @@
+---
+
+- name: Install a list of packages
+  apt:
+    pkg:
+    - nginx
+    - php7.2
+    - php7.2-fpm
+    update_cache: yes
+  become: true
+
+- name: Config service nginx
+  template: 
+    src: default 
+    dest: /etc/nginx/sites-enabled/default
+    mode: u=rwx,g=rx,o=rx
+  become: true
+
+- name: Clone repo pesbuk
+  git:
+    repo: https://github.com/imanwibisono/sosial-media.git
+    dest: /var/www/sosial-media-master
+  become: true
+
+- name: restart nginx
+  service: name=nginx state=reloaded
+  become: true
